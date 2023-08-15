@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap');
+
+
+/* || VARIABLES */
+
+:root {
+    /* fonts */
+    --ff-title: 'Big Shoulders Display', sans-serif;
+    --ff-text: 'Lexend Deca', sans-serif;
+    --fz-title: calc(1vw + 2.5rem);
+    --fz-text: clamp(.9rem, 1vw, 1.5rem);
+    /* primary colors */
+    --bg-sedan: hsl(31, 77%, 52%);
+    --bg-suvs: hsl(184, 100%, 22%);
+    --bg-luxury: hsl(179, 100%, 13%);
+    /* general styles variables */
+    --text-color: hsla(0, 0%, 100%, 0.75);
+    --varius-color: hsl(0, 0%, 95%);
+    --border-rounded-card: 10px;
+    --border-rounded-btn: 50px;
+    --border-rounded-img: 50%;
+    --padding-btn: 1rem 1.5rem;
+
+}
+
+/* || RESET CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* || General styles */
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: max(100%, 60%); 
+    padding: 1rem;
+    grid-template-areas: 
+    'sedan sedan sedan'
+    'suvs suvs suvs'
+    'luxury luxury luxury';
+}
+
+.card__item {
+    padding: 3rem;
+}
+
+.card__title {
+    font-family: var(--ff-title);
+    font-size: var(--fz-title);
+    color: var(--varius-color);
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+}
+
+.card__text {
+    font-family: var(--ff-text);
+    font-size: var(--fz-text);
+    color: var(--text-color);
+    margin-top: 1.5rem;
+    line-height: 1.5rem;
+}
+
+
+
+.card__item--sedan {
+    border-top-left-radius: var(--border-rounded-card);
+    border-top-right-radius: var(--border-rounded-card);
+    grid-area: sedan;
+    background: var(--bg-sedan);
+    & .btn {
+        color: var(--bg-sedan);
+    }
+
+}
+
+
+.card__item--suvs{
+    grid-area: suvs;
+    background: var(--bg-suvs);
+    & .btn {
+        color: var(--bg-suvs);
+    }
+}
+
+
+.card__item--luxury {
+    border-bottom-left-radius: var(--border-rounded-card);
+    border-bottom-right-radius: var(--border-rounded-card);
+    grid-area: luxury;
+    background: var(--bg-luxury);
+    & .btn {
+        color: var(--bg-luxury);
+    }
+}
+
+
+.btn {
+    margin-top: 2rem;
+    padding: var(--padding-btn);
+    font-family: var(--ff-text);
+    font-size: var(--fz-text);
+    background: var(--varius-color);
+    border: none;
+    border-radius: var(--border-rounded-btn);
+}
+
+.btn:hover {
+    background: transparent;
+    border: 2px solid var(--varius-color);
+    color: var(--varius-color);
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    padding: 1rem;
+    font-family: var(--ff-text);
+    font-size: clamp(.8rem, 1vw, 1.5rem)
+}
+
+.attribution a {
+    text-decoration: none;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 576px) {
+    .card {
+        width: max(100%, 60%);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+        'sedan sedan sedan sedan'
+        'sedan sedan sedan sedan'
+        'suvs suvs luxury luxury' ;
+    }   
+    .card__item--sedan {
+        border-top-right-radius: var(--border-rounded-card);
+        border-bottom-left-radius: var(--border-rounded-card);
+        border-bottom-left-radius: 0;
+        grid-area: sedan;
+    }
+    .card__item--suvs { 
+        border-bottom-left-radius: var(--border-rounded-card);
+        grid-area: suvs;
+    }
+    .card__item--luxury {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        grid-area: luxury;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .card{
+        width: max(100%, 60%);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+        'sedan suvs luxury'
+        'sedan suvs luxury'
+        'sedan suvs luxury';
+    }
+    .card__item--sedan {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: var(--border-rounded-card);
+    }
+
+    .card__item--suvs {
+        border-bottom-left-radius: 0;
+    }
+    .card__item--luxury {
+        border-top-right-radius: var(--border-rounded-card);
+    }
+}
+
+
+@media screen and (min-width: 1290px) {
+    
+    .card {
+        width: min(100%, 60%)
+    }
+}
+
+
+
